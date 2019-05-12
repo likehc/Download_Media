@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "一键下载视频",
+  "description": "获取视频连接,生成下载按钮",
+  "version": "1.0",
+  "options_page": "options.html",
+  "permissions": [
+    "tabs",
+    "*://*/*",
+    "activeTab",
+    "downloads",
+    "webRequest", 
+    "webRequestBlocking",
+    "management",
+    "notifications",
+
+     "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["js/Base_Js/baseParasBackground.js","js/Base_Js/bg.js"],
+    "persistent": true
+  },
+  "icons":{
+    "16":"ico/icon.png",
+    "48":"ico/icon.png",
+    "128":"ico/icon.png"
+  },
+  "content_scripts": [ {
+      "js": ["js/Base_Js/jquery.min.js","js/Base_Js/ThunderURIEncode.js","js/Base_Js/baseParasPopup.js","js/Base_Js/popup.js"],
+      "matches": ["*://*/*"],
+      "run_at": "document_end",
+      "all_frames":true
+   } ],
+  "browser_action": {
+    "default_icon": "ico/icon.png",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": ["ico/*"]
+}
+
+//"run_at": "document_idle",
